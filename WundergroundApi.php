@@ -1,7 +1,7 @@
 <?php
 	/*****************************************************************
-	 * WundergroundApi v 1.0
-	 * @copyright Barry Dam - BIC 2014
+	 * WundergroundApi v 1.0 (05-02-2014)
+	 * @copyright Barry Dam - BIC 
 	 * Deze weer info maakt gebruik van wunderground.com api
 	 *
 	 * De api query kan een plaatsnaam bevatten of lat lng coordinaten!
@@ -14,18 +14,18 @@
 	 * gebruik door $objWeather = new WundergroundApi('Maastricht', apikey, 'NL');
 	 * alles in de public $data is opvraagbaar... en in de arrApiResult staat alles (dus je kunt meer info gebruiken)
 	 *
-	 *	
+	 *	LET OP: @use URL_BASE en FILE_PATH !!
 	 *
 	*******************************************************************/
 	class WundergroundApi {
-
+		
 		private $config = array(
 			'fileCache'			=> false,
 			'apiKey'			=> false,
 			'apiURL'			=> false,
 			'apiLang'			=> 'NL',
-			'strFolder'			=> '/', // folder name relative to  root
-			'strImageFolder'	=> 'images/'  // folder name relative to  root
+			'strFolder'			=> 'modules/weather/', // folder name relative to  root
+			'strImageFolder'	=> 'modules/weather/images/'  // folder name relative to  root
 		);
 
 		/**
@@ -40,7 +40,7 @@
 			'wind'			=> false,
 			'image'			=> false
 		);
-
+		
 		/**
 		 *  Magic methods 
 		 */
@@ -61,7 +61,7 @@
 		{
 			$this->data[$getName] = $getValue;
 			if ($getName == 'strLocation') {
-				$this->config['fileCache'] = $this->config['strFolder'].'cache/json.'.strtolower(preg_replace("/[^a-zA-Z0-9]/", "", $getValue)).'.'.$this->config['apiLang'].'.txt';
+				$this->config['fileCache'] = FILE_PATH.$this->config['strFolder'].'cache/json.'.strtolower(preg_replace("/[^a-zA-Z0-9]/", "", $getValue)).'.'.$this->config['apiLang'].'.txt';
 				$this->config['apiURL'] 	= 'http://api.wunderground.com/api/'.$this->config['apiKey'].'/conditions/lang:'.$this->config['apiLang'].'/q/'.$getValue.'.json';
 			}
 		}
@@ -118,7 +118,7 @@
 						/**
 						 * Don't throw an exception but just log the error 
 						 */
-						file_put_contents($this->config['strFolder'].'cache/error'.time().'.txt', implode($arrCurlResult));
+						file_put_contents(FILE_PATH.$this->config['strFolder'].'cache/error'.time().'.txt', implode($arrCurlResult));
 					} else {
 						/* try an second attempt (force the cache or redo a curl request) */
 						if (is_file($this->config['fileCache'])) touch($this->config['fileCache']);
@@ -132,7 +132,7 @@
 			$arrObservation 	= $this->arrApiResult['current_observation'];
 			$this->temperature 	= round($arrObservation['temp_c']).'&deg;';
 			$this->condition	= $arrObservation['weather'];
-			$this->image		= $this->config['strImageFolder'].self::setData_image($arrObservation['icon']);
+			$this->image		= URL_BASE.$this->config['strImageFolder'].self::setData_image($arrObservation['icon']);
 			$this->humidity		= $arrObservation['relative_humidity'];
 			$this->wind			= $arrObservation['wind_kph'].' km/h - '.$arrObservation['wind_dir'];
 		}
