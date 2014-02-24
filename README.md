@@ -7,11 +7,11 @@ It will cache the wunderground results to prevent excessive usage.
 You need your own wunderground.com apiKey. Get it for free at http://www.wunderground.com/weather/api/
 
 
-### Example ###:
+### Example:
 
 ```
    $objWeather = new WundergroundApi('Maastricht', API_KEY);
-   
+
    $objWeather->temperature;
 
    $objWeather->strLocation;
