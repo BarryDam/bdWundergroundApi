@@ -11,9 +11,14 @@ Use example :
 
 $objWeather = new WundergroundApi('Maastricht', API_KEY);
 
-echo $objWeather->temperature;
-echo $objWeather->strLocation;
-echo $objWeather->condition;
-echo $objWeather->humidity;
-echo $objWeather->wind;
-echo $objWeather->image;
+$objWeather->temperature;
+
+$objWeather->strLocation;
+
+$objWeather->condition;
+
+$objWeather->humidity;
+
+$objWeather->wind;
+
+$objWeather->image;
