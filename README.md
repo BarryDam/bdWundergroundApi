@@ -10,7 +10,7 @@ You need your own wunderground.com apiKey. Get it for free at http://www.wunderg
 ### Example:
 
 ```
-   $objWeather = new WundergroundApi('Maastricht', API_KEY);
+   $objWeather = new bdWundergroundApi('Maastricht', API_KEY);
 
    $objWeather->temperature;
 

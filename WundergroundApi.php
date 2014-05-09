@@ -17,7 +17,7 @@
 	 *	LET OP: @use URL_BASE en FILE_PATH !!
 	 *
 	*******************************************************************/
-	class WundergroundApi {
+	class bdWundergroundApi {
 		
 		private $config = array(
 			'fileCache'			=> false,
