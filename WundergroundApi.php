@@ -1,6 +1,6 @@
 <?php
 	/*****************************************************************
-	 * WundergroundApi v 1.0 (05-02-2014)
+	 * bdWundergroundApi v 1.0 (05-02-2014)
 	 * @copyright Barry Dam - BIC 
 	 * Deze weer info maakt gebruik van wunderground.com api
 	 *
@@ -11,7 +11,7 @@
 	 *
 	 * de gratis api kan 500 apicalls per dag aan, maximaal 10 per minuut
 	 *
-	 * gebruik door $objWeather = new WundergroundApi('Maastricht', apikey, 'NL');
+	 * gebruik door $objWeather = new bdWundergroundApi('Maastricht', apikey, 'NL');
 	 * alles in de public $data is opvraagbaar... en in de arrApiResult staat alles (dus je kunt meer info gebruiken)
 	 *
 	 *	LET OP: @use URL_BASE en FILE_PATH !!

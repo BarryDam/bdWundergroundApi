@@ -25,3 +25,6 @@ You need your own wunderground.com apiKey. Get it for free at http://www.wunderg
    $objWeather->image;
 
 ```
+
+##BUY ME A BEER##
+[![PayPayl donate button](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XX68BNMVCD7YS "Donate once-off to this project using Paypal")
